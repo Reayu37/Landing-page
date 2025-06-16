@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolanaSniper | Fastest Solana Sniping Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#9945FF',secondary:'#14F195'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+        }
+        .stat-card {
+            background: rgba(153, 69, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(153, 69, 255, 0.1);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        input:focus {
+            outline: none;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #9945FF;
+            border-color: #9945FF;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header Navigation -->
+    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-['Pacifico'] text-primary mr-10">logo</h1>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="font-medium hover:text-primary transition-colors">Features</a>
+                    <a href="#testimonials" class="font-medium hover:text-primary transition-colors">Testimonials</a>
+                    <a href="#stats" class="font-medium hover:text-primary transition-colors">Performance</a>
+                    <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">Contact</a>
+                <a href="#start" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=Futuristic%20crypto%20trading%20interface%20with%20Solana%20logo%2C%20dark%20theme%20with%20purple%20and%20teal%20accents%2C%20showing%20charts%20and%20trading%20data.%20The%20left%20side%20should%20have%20a%20dark%20gradient%20that%20smoothly%20transitions%20to%20the%20image%20content%20on%20the%20right.%20Modern%2C%20sleek%20design%20with%20glowing%20elements%20and%20digital%20particles.&width=1600&height=800&seq=hero1&orientation=landscape'); background-size: cover; background-position: center right;">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="container mx-auto px-4 py-32 md:py-40 relative z-10">
+            <div class="w-full max-w-2xl">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    The Fastest Solana <span class="text-primary">Sniping Bot</span> for Serious Traders
+                </h1>
+                <p class="text-xl text-gray-200 mb-8">
+                    Snipe new Solana tokens within milliseconds of launch. Secure profits before others even see the opportunity.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#start" class="bg-primary text-white px-8 py-3 !rounded-button font-medium text-lg hover:bg-primary/90 transition-colors flex items-center justify-center whitespace-nowrap">
+                        <i class="ri-rocket-line mr-2"></i> Start Sniping
+                    </a>
+                    <a href="#telegram" class="bg-white text-gray-800 px-8 py-3 !rounded-button font-medium text-lg hover:bg-gray-100 transition-colors flex items-center justify-center whitespace-nowrap">
+                        <i class="ri-telegram-line mr-2 text-primary"></i> Join Telegram
+                    </a>
+                </div>
+                <div class="mt-8 text-gray-300 flex items-center">
+                    <div class="flex -space-x-2 mr-3">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20headshot%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=user1&orientation=squarish" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20crypto%20trader%20headshot%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=user2&orientation=squarish" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20with%20glasses%20headshot%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=user3&orientation=squarish" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
+                    </div>
+                    <span>Trusted by 10,000+ traders worldwide</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Traders Choose Our Bot</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our advanced technology gives you the edge in the competitive Solana token market
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-speed-up-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Lightning Speed</h3>
+                    <p class="text-gray-600">
+                        Snipe tokens within milliseconds of launch with our optimized transaction execution system.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-robot-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Full Automation</h3>
+                    <p class="text-gray-600">
+                        Set your parameters once and let the bot handle everything from buying to profit-taking.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-shield-check-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Risk Protection</h3>
+                    <p class="text-gray-600">
+                        Advanced scam detection and auto-sell features protect your capital from rug pulls.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="ri-telegram-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Telegram Integration</h3>
+                    <p class="text-gray-600">
+                        Control everything with simple Telegram commands. No complex interfaces to learn.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">🗣️ What Traders Are Saying</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Real results from real traders using our sniping bot
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-double-quotes-l text-primary text-4xl opacity-30"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        "Sniped $DOGZILLA at 12 seconds in. 6x in under 2 minutes. Never going back."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20with%20casual%20style%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=test1&orientation=squarish" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">@SolanaSpeedy</p>
+                            <p class="text-gray-500 text-sm">Early user</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-double-quotes-l text-primary text-4xl opacity-30"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        "Tried 4 bots. This one sniped fastest and sold perfectly at peak."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20with%20glasses%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=test2&orientation=squarish" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">@MemeKingSol</p>
+                            <p class="text-gray-500 text-sm">Verified trader</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <i class="ri-double-quotes-l text-primary text-4xl opacity-30"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        "I love how simple it is. I click one button on Telegram, and it just works."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20crypto%20trader%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=test3&orientation=squarish" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">@CTDegenQueen</p>
+                            <p class="text-gray-500 text-sm">Pro trader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Proven Performance</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our bot consistently delivers results that speak for themselves
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">12,583+</h3>
+                    <p class="text-gray-600 text-lg">Successful Snipes</p>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">347%</h3>
+                    <p class="text-gray-600 text-lg">Average Monthly ROI</p>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">10,000+</h3>
+                    <p class="text-gray-600 text-lg">Active Users</p>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">$142M+</h3>
+                    <p class="text-gray-600 text-lg">Trading Volume</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Simple setup, powerful results in just three easy steps
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-primary text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Connect Your Wallet</h3>
+                    <p class="text-gray-600">
+                        Securely connect your Solana wallet to our platform with just a few clicks.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-primary text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Set Your Parameters</h3>
+                    <p class="text-gray-600">
+                        Customize your sniping strategy with our intuitive interface or Telegram commands.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-primary text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Start Sniping</h3>
+                    <p class="text-gray-600">
+                        Activate the bot and watch it automatically snipe tokens and secure profits.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Choose Your Plan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Flexible options designed for traders of all levels
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                    <p class="text-gray-600 mb-6">Perfect for new traders</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$99</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Basic sniping features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>5 concurrent snipes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Telegram integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Basic risk protection</span>
+                        </li>
+                    </ul>
+                    <a href="#start" class="block w-full bg-white border border-primary text-primary text-center px-6 py-3 !rounded-button font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Get Started</a>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="bg-white p-8 rounded-lg shadow-md border-2 border-primary relative">
+                    <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 transform translate-y-0 !rounded-button">
+                        MOST POPULAR
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Professional</h3>
+                    <p class="text-gray-600 mb-6">For serious traders</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$249</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Advanced sniping features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>20 concurrent snipes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Priority transaction execution</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Advanced risk management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>24/7 support</span>
+                        </li>
+                    </ul>
+                    <a href="#start" class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</a>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-600 mb-6">For institutional traders</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$499</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>All Professional features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Unlimited concurrent snipes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Custom strategy development</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="ri-check-line text-primary mr-2"></i>
+                            <span>API access</span>
+                        </li>
+                    </ul>
+                    <a href="#start" class="block w-full bg-white border border-primary text-primary text-center px-6 py-3 !rounded-button font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Everything you need to know about our sniping bot
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <h3 class="text-xl font-semibold mb-3">How does the sniping bot work?</h3>
+                    <p class="text-gray-600">
+                        Our bot monitors the Solana blockchain for new token launches and executes buy transactions within milliseconds. It uses advanced algorithms to identify promising tokens and executes trades based on your pre-set parameters.
+                    </p>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <h3 class="text-xl font-semibold mb-3">Is my wallet safe?</h3>
+                    <p class="text-gray-600">
+                        Absolutely. Our bot never requires your private keys. It connects to your wallet using secure authorization methods and only performs the specific actions you approve. Your funds remain in your control at all times.
+                    </p>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <h3 class="text-xl font-semibold mb-3">How much profit can I expect?</h3>
+                    <p class="text-gray-600">
+                        Results vary based on market conditions, your settings, and the tokens you target. Our users typically see ROIs ranging from 50% to 500% on successful snipes, but trading always involves risk and past performance doesn't guarantee future results.
+                    </p>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <h3 class="text-xl font-semibold mb-3">Can I use this on other blockchains?</h3>
+                    <p class="text-gray-600">
+                        Currently, our bot is optimized specifically for the Solana blockchain to provide the fastest possible execution speeds. We're exploring expansion to other chains in the future based on user demand.
+                    </p>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">What if I need help?</h3>
+                    <p class="text-gray-600">
+                        We offer 24/7 support through our Telegram channel for all paid plans. Our team of experts is always available to help you optimize your settings and resolve any issues you might encounter.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="start" class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Sniping?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Join thousands of successful traders who are already using our bot to secure profits on Solana.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#register" class="bg-white text-primary px-8 py-3 !rounded-button font-medium text-lg hover:bg-gray-100 transition-colors flex items-center justify-center whitespace-nowrap">
+                    <i class="ri-rocket-line mr-2"></i> Get Started Now
+                </a>
+                <a href="#telegram" id="telegram" class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button font-medium text-lg hover:bg-white/10 transition-colors flex items-center justify-center whitespace-nowrap">
+                    <i class="ri-telegram-line mr-2"></i> Join Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <h1 class="text-2xl font-['Pacifico'] text-primary mb-4">logo</h1>
+                    <p class="text-gray-400 mb-4">
+                        The fastest and most reliable Solana token sniping bot on the market.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-twitter-x-line text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-telegram-line text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-discord-line text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="ri-medium-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Status</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+                    <p class="text-gray-400 mb-4">
+                        Subscribe to our newsletter for trading tips and updates.
+                    </p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-800 border-none text-white px-4 py-2 !rounded-button !rounded-r-none w-full focus:bg-gray-700 transition-colors">
+                        <button type="submit" class="bg-primary text-white px-4 py-2 !rounded-button !rounded-l-none hover:bg-primary/90 transition-colors whitespace-nowrap">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">
+                    © 2025 SolanaSniper. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="newsletter-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput && emailInput.value) {
+                        // Here would be the actual subscription logic
+                        alert('Thank you for subscribing!');
+                        emailInput.value = '';
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
