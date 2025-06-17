@@ -1,626 +1,1515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolanaSniper | Fastest Solana Sniping Bot</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#9945FF',secondary:'#14F195'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
-    <style>
-        :where([class^="ri-"])::before { content: "\f3c2"; }
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .hero-gradient {
-            background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
-        }
-        .stat-card {
-            background: rgba(153, 69, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(153, 69, 255, 0.1);
-        }
-        .feature-card {
-            transition: all 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .testimonial-card {
-            transition: all 0.3s ease;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        input:focus {
-            outline: none;
-        }
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        .custom-checkbox {
-            display: inline-block;
-            position: relative;
-            cursor: pointer;
-        }
-        .custom-checkbox input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-color: #fff;
-            border: 2px solid #e2e8f0;
-            border-radius: 4px;
-        }
-        .custom-checkbox input:checked ~ .checkmark {
-            background-color: #9945FF;
-            border-color: #9945FF;
-        }
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-        .custom-checkbox input:checked ~ .checkmark:after {
-            display: block;
-        }
-        .custom-checkbox .checkmark:after {
-            left: 6px;
-            top: 2px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolanaSnipe | Advanced Solana Sniper Bot</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8C52FF',secondary:'#FF5E84'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+overflow-x: hidden;
+}
+.hero-gradient {
+background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+}
+.glow {
+box-shadow: 0 0 15px rgba(140, 82, 255, 0.5);
+}
+.token-glow {
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(140, 82, 255, 0.4); }
+70% { box-shadow: 0 0 0 10px rgba(140, 82, 255, 0); }
+100% { box-shadow: 0 0 0 0 rgba(140, 82, 255, 0); }
+}
+.ticker {
+animation: ticker 30s linear infinite;
+}
+@keyframes ticker {
+0% { transform: translateX(0); }
+100% { transform: translateX(-100%); }
+}
+.floating {
+animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+.custom-scrollbar::-webkit-scrollbar {
+width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+background: #1e1e2d;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+background: #8C52FF;
+border-radius: 10px;
+}
+input[type="range"] {
+-webkit-appearance: none;
+appearance: none;
+background: #2d2d3d;
+height: 6px;
+border-radius: 5px;
+outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #8C52FF;
+cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
 </head>
-<body class="bg-white text-gray-800">
-    <!-- Header Navigation -->
-    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <h1 class="text-2xl font-['Pacifico'] text-primary mr-10">logo</h1>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#features" class="font-medium hover:text-primary transition-colors">Features</a>
-                    <a href="#testimonials" class="font-medium hover:text-primary transition-colors">Testimonials</a>
-                    <a href="#stats" class="font-medium hover:text-primary transition-colors">Performance</a>
-                    <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
-                </nav>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="#contact" class="text-primary font-medium hover:text-primary/80 transition-colors">Contact</a>
-                <a href="#start" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="relative pt-24 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=Futuristic%20crypto%20trading%20interface%20with%20Solana%20logo%2C%20dark%20theme%20with%20purple%20and%20teal%20accents%2C%20showing%20charts%20and%20trading%20data.%20The%20left%20side%20should%20have%20a%20dark%20gradient%20that%20smoothly%20transitions%20to%20the%20image%20content%20on%20the%20right.%20Modern%2C%20sleek%20design%20with%20glowing%20elements%20and%20digital%20particles.&width=1600&height=800&seq=hero1&orientation=landscape'); background-size: cover; background-position: center right;">
-        <div class="hero-gradient absolute inset-0"></div>
-        <div class="container mx-auto px-4 py-32 md:py-40 relative z-10">
-            <div class="w-full max-w-2xl">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                    The Fastest Solana <span class="text-primary">Sniping Bot</span> for Serious Traders
-                </h1>
-                <p class="text-xl text-gray-200 mb-8">
-                    Snipe new Solana tokens within milliseconds of launch. Secure profits before others even see the opportunity.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#start" class="bg-primary text-white px-8 py-3 !rounded-button font-medium text-lg hover:bg-primary/90 transition-colors flex items-center justify-center whitespace-nowrap">
-                        <i class="ri-rocket-line mr-2"></i> Start Sniping
-                    </a>
-                    <a href="#telegram" class="bg-white text-gray-800 px-8 py-3 !rounded-button font-medium text-lg hover:bg-gray-100 transition-colors flex items-center justify-center whitespace-nowrap">
-                        <i class="ri-telegram-line mr-2 text-primary"></i> Join Telegram
-                    </a>
-                </div>
-                <div class="mt-8 text-gray-300 flex items-center">
-                    <div class="flex -space-x-2 mr-3">
-                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20headshot%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=user1&orientation=squarish" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
-                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20crypto%20trader%20headshot%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=user2&orientation=squarish" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
-                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20with%20glasses%20headshot%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=user3&orientation=squarish" alt="User" class="w-8 h-8 rounded-full border-2 border-white">
-                    </div>
-                    <span>Trusted by 10,000+ traders worldwide</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Traders Choose Our Bot</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Our advanced technology gives you the edge in the competitive Solana token market
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="ri-speed-up-line text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Lightning Speed</h3>
-                    <p class="text-gray-600">
-                        Snipe tokens within milliseconds of launch with our optimized transaction execution system.
-                    </p>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="ri-robot-line text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Full Automation</h3>
-                    <p class="text-gray-600">
-                        Set your parameters once and let the bot handle everything from buying to profit-taking.
-                    </p>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="ri-shield-check-line text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Risk Protection</h3>
-                    <p class="text-gray-600">
-                        Advanced scam detection and auto-sell features protect your capital from rug pulls.
-                    </p>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="feature-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <i class="ri-telegram-line text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Telegram Integration</h3>
-                    <p class="text-gray-600">
-                        Control everything with simple Telegram commands. No complex interfaces to learn.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">🗣️ What Traders Are Saying</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Real results from real traders using our sniping bot
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                    <div class="flex items-center mb-4">
-                        <i class="ri-double-quotes-l text-primary text-4xl opacity-30"></i>
-                    </div>
-                    <p class="text-gray-700 mb-6 text-lg">
-                        "Sniped $DOGZILLA at 12 seconds in. 6x in under 2 minutes. Never going back."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20with%20casual%20style%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=test1&orientation=squarish" alt="User" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <p class="font-semibold text-gray-800">@SolanaSpeedy</p>
-                            <p class="text-gray-500 text-sm">Early user</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                    <div class="flex items-center mb-4">
-                        <i class="ri-double-quotes-l text-primary text-4xl opacity-30"></i>
-                    </div>
-                    <p class="text-gray-700 mb-6 text-lg">
-                        "Tried 4 bots. This one sniped fastest and sold perfectly at peak."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://readdy.ai/api/search-image?query=professional%20male%20crypto%20trader%20with%20glasses%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=test2&orientation=squarish" alt="User" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <p class="font-semibold text-gray-800">@MemeKingSol</p>
-                            <p class="text-gray-500 text-sm">Verified trader</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                    <div class="flex items-center mb-4">
-                        <i class="ri-double-quotes-l text-primary text-4xl opacity-30"></i>
-                    </div>
-                    <p class="text-gray-700 mb-6 text-lg">
-                        "I love how simple it is. I click one button on Telegram, and it just works."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20crypto%20trader%2C%20side%20profile%2C%20high%20quality%20portrait&width=100&height=100&seq=test3&orientation=squarish" alt="User" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <p class="font-semibold text-gray-800">@CTDegenQueen</p>
-                            <p class="text-gray-500 text-sm">Pro trader</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Stats Section -->
-    <section id="stats" class="py-20 bg-gradient-to-r from-primary/5 to-secondary/5">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Proven Performance</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Our bot consistently delivers results that speak for themselves
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Stat 1 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">12,583+</h3>
-                    <p class="text-gray-600 text-lg">Successful Snipes</p>
-                </div>
-                
-                <!-- Stat 2 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">347%</h3>
-                    <p class="text-gray-600 text-lg">Average Monthly ROI</p>
-                </div>
-                
-                <!-- Stat 3 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">10,000+</h3>
-                    <p class="text-gray-600 text-lg">Active Users</p>
-                </div>
-                
-                <!-- Stat 4 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <h3 class="text-4xl md:text-5xl font-bold text-primary mb-2">$142M+</h3>
-                    <p class="text-gray-600 text-lg">Trading Volume</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Simple setup, powerful results in just three easy steps
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Step 1 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-primary text-2xl font-bold">1</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Connect Your Wallet</h3>
-                    <p class="text-gray-600">
-                        Securely connect your Solana wallet to our platform with just a few clicks.
-                    </p>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-primary text-2xl font-bold">2</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Set Your Parameters</h3>
-                    <p class="text-gray-600">
-                        Customize your sniping strategy with our intuitive interface or Telegram commands.
-                    </p>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-primary text-2xl font-bold">3</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Start Sniping</h3>
-                    <p class="text-gray-600">
-                        Activate the bot and watch it automatically snipe tokens and secure profits.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Choose Your Plan</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Flexible options designed for traders of all levels
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Basic Plan -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                    <h3 class="text-2xl font-bold mb-2">Starter</h3>
-                    <p class="text-gray-600 mb-6">Perfect for new traders</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold">$99</span>
-                        <span class="text-gray-500">/month</span>
-                    </div>
-                    <ul class="mb-8 space-y-3">
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Basic sniping features</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>5 concurrent snipes</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Telegram integration</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Basic risk protection</span>
-                        </li>
-                    </ul>
-                    <a href="#start" class="block w-full bg-white border border-primary text-primary text-center px-6 py-3 !rounded-button font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Get Started</a>
-                </div>
-                
-                <!-- Pro Plan -->
-                <div class="bg-white p-8 rounded-lg shadow-md border-2 border-primary relative">
-                    <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 transform translate-y-0 !rounded-button">
-                        MOST POPULAR
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Professional</h3>
-                    <p class="text-gray-600 mb-6">For serious traders</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold">$249</span>
-                        <span class="text-gray-500">/month</span>
-                    </div>
-                    <ul class="mb-8 space-y-3">
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Advanced sniping features</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>20 concurrent snipes</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Priority transaction execution</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Advanced risk management</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>24/7 support</span>
-                        </li>
-                    </ul>
-                    <a href="#start" class="block w-full bg-primary text-white text-center px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</a>
-                </div>
-                
-                <!-- Enterprise Plan -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-                    <p class="text-gray-600 mb-6">For institutional traders</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold">$499</span>
-                        <span class="text-gray-500">/month</span>
-                    </div>
-                    <ul class="mb-8 space-y-3">
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>All Professional features</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Unlimited concurrent snipes</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Custom strategy development</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>Dedicated account manager</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-check-line text-primary mr-2"></i>
-                            <span>API access</span>
-                        </li>
-                    </ul>
-                    <a href="#start" class="block w-full bg-white border border-primary text-primary text-center px-6 py-3 !rounded-button font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Contact Sales</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Everything you need to know about our sniping bot
-                </p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto">
-                <!-- FAQ Item 1 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <h3 class="text-xl font-semibold mb-3">How does the sniping bot work?</h3>
-                    <p class="text-gray-600">
-                        Our bot monitors the Solana blockchain for new token launches and executes buy transactions within milliseconds. It uses advanced algorithms to identify promising tokens and executes trades based on your pre-set parameters.
-                    </p>
-                </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <h3 class="text-xl font-semibold mb-3">Is my wallet safe?</h3>
-                    <p class="text-gray-600">
-                        Absolutely. Our bot never requires your private keys. It connects to your wallet using secure authorization methods and only performs the specific actions you approve. Your funds remain in your control at all times.
-                    </p>
-                </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <h3 class="text-xl font-semibold mb-3">How much profit can I expect?</h3>
-                    <p class="text-gray-600">
-                        Results vary based on market conditions, your settings, and the tokens you target. Our users typically see ROIs ranging from 50% to 500% on successful snipes, but trading always involves risk and past performance doesn't guarantee future results.
-                    </p>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <h3 class="text-xl font-semibold mb-3">Can I use this on other blockchains?</h3>
-                    <p class="text-gray-600">
-                        Currently, our bot is optimized specifically for the Solana blockchain to provide the fastest possible execution speeds. We're exploring expansion to other chains in the future based on user demand.
-                    </p>
-                </div>
-                
-                <!-- FAQ Item 5 -->
-                <div>
-                    <h3 class="text-xl font-semibold mb-3">What if I need help?</h3>
-                    <p class="text-gray-600">
-                        We offer 24/7 support through our Telegram channel for all paid plans. Our team of experts is always available to help you optimize your settings and resolve any issues you might encounter.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="start" class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Sniping?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Join thousands of successful traders who are already using our bot to secure profits on Solana.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#register" class="bg-white text-primary px-8 py-3 !rounded-button font-medium text-lg hover:bg-gray-100 transition-colors flex items-center justify-center whitespace-nowrap">
-                    <i class="ri-rocket-line mr-2"></i> Get Started Now
-                </a>
-                <a href="#telegram" id="telegram" class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button font-medium text-lg hover:bg-white/10 transition-colors flex items-center justify-center whitespace-nowrap">
-                    <i class="ri-telegram-line mr-2"></i> Join Telegram
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- Company Info -->
-                <div>
-                    <h1 class="text-2xl font-['Pacifico'] text-primary mb-4">logo</h1>
-                    <p class="text-gray-400 mb-4">
-                        The fastest and most reliable Solana token sniping bot on the market.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-twitter-x-line text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-telegram-line text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-discord-line text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="ri-medium-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Support -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Support</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Status</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Newsletter -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
-                    <p class="text-gray-400 mb-4">
-                        Subscribe to our newsletter for trading tips and updates.
-                    </p>
-                    <form id="newsletter-form" class="flex">
-                        <input type="email" placeholder="Your email" class="bg-gray-800 border-none text-white px-4 py-2 !rounded-button !rounded-r-none w-full focus:bg-gray-700 transition-colors">
-                        <button type="submit" class="bg-primary text-white px-4 py-2 !rounded-button !rounded-l-none hover:bg-primary/90 transition-colors whitespace-nowrap">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 mb-4 md:mb-0">
-                    © 2025 SolanaSniper. All rights reserved.
-                </p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Terms</a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy</a>
-                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script id="newsletter-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const newsletterForm = document.getElementById('newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const emailInput = this.querySelector('input[type="email"]');
-                    if (emailInput && emailInput.value) {
-                        // Here would be the actual subscription logic
-                        alert('Thank you for subscribing!');
-                        emailInput.value = '';
-                    } else {
-                        alert('Please enter a valid email address.');
-                    }
-                });
-            }
-        });
-    </script>
+<body class="bg-[#f9f9fc]">
+<!-- Landing Page -->
+<div id="landing-page" class="relative">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm shadow-sm">
+<div class="container mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<h1 class="text-2xl font-['Pacifico'] text-primary">logo</h1>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#features" class="text-gray-700 hover:text-primary transition-colors">Features</a>
+<a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors">How It Works</a>
+<a href="#pricing" class="text-gray-700 hover:text-primary transition-colors">Pricing</a>
+<a href="#faq" class="text-gray-700 hover:text-primary transition-colors">FAQ</a>
+</div>
+<div class="flex items-center space-x-4">
+<button id="start-now-nav" class="hidden md:block px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all !rounded-button whitespace-nowrap">Start Now</button>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<div class="relative w-full h-[80vh] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=minimalist%20abstract%20background%20with%20soft%20geometric%20shapes%20and%20subtle%20gradients%2C%20modern%20professional%20design%20with%20clean%20lines%20and%20elegant%20curves%2C%20light%20purple%20and%20blue%20tones%2C%20premium%20quality%20render%2C%20simple%20and%20sophisticated&width=1920&height=800&seq=hero3&orientation=landscape');">
+<div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.2) 65%, rgba(0,0,0,0) 100%)"></div>
+</div>
+<div class="relative container mx-auto px-6 h-full flex items-center">
+<div class="w-full max-w-2xl text-white pt-20">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Advanced Solana Sniper Bot with AI-Powered Trading</h1>
+<p class="text-lg md:text-xl opacity-90 mb-8">Maximize your trading potential with our cutting-edge sniper bot. Leverage Jito, Helius, and DexScreener integration for lightning-fast execution and optimal profits.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button id="start-now-hero" class="px-8 py-3 bg-primary text-white rounded-button text-lg font-semibold hover:bg-opacity-90 transition-all glow !rounded-button whitespace-nowrap">Start Now</button>
+<button class="px-8 py-3 bg-white bg-opacity-20 backdrop-blur-sm text-white rounded-button text-lg font-semibold hover:bg-opacity-30 transition-all border border-white border-opacity-30 !rounded-button whitespace-nowrap">Watch Demo</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Ticker -->
+<div class="bg-gray-900 py-3 overflow-hidden">
+<div class="ticker flex items-center space-x-8 text-white">
+<div class="flex items-center space-x-8 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">SOL</span>
+<span>$178.42</span>
+<span class="text-green-500">+5.8%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">BONK</span>
+<span>$0.00002134</span>
+<span class="text-green-500">+12.3%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">JTO</span>
+<span>$3.87</span>
+<span class="text-red-500">-2.1%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">PYTH</span>
+<span>$0.78</span>
+<span class="text-green-500">+3.4%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">RNDR</span>
+<span>$7.23</span>
+<span class="text-green-500">+1.9%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">BOME</span>
+<span>$0.00000912</span>
+<span class="text-green-500">+28.5%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">MEME</span>
+<span>$0.0324</span>
+<span class="text-red-500">-4.2%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">SAMO</span>
+<span>$0.0189</span>
+<span class="text-green-500">+8.7%</span>
+</div>
+</div>
+<div class="flex items-center space-x-8 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">SOL</span>
+<span>$178.42</span>
+<span class="text-green-500">+5.8%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">BONK</span>
+<span>$0.00002134</span>
+<span class="text-green-500">+12.3%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">JTO</span>
+<span>$3.87</span>
+<span class="text-red-500">-2.1%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">PYTH</span>
+<span>$0.78</span>
+<span class="text-green-500">+3.4%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">RNDR</span>
+<span>$7.23</span>
+<span class="text-green-500">+1.9%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">BOME</span>
+<span>$0.00000912</span>
+<span class="text-green-500">+28.5%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">MEME</span>
+<span>$0.0324</span>
+<span class="text-red-500">-4.2%</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-primary font-semibold">SAMO</span>
+<span>$0.0189</span>
+<span class="text-green-500">+8.7%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Section -->
+<section id="features" class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Advanced Features</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Our sniper bot combines cutting-edge technology with user-friendly interfaces to give you the competitive edge in Solana trading.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 transition-all hover:shadow-xl">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-robot-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">AI-Powered Auto Sniping</h3>
+<p class="text-gray-600">Our advanced AI algorithms analyze market conditions in real-time to identify and execute profitable trades automatically.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 transition-all hover:shadow-xl">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-line-chart-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Real-Time Market Data</h3>
+<p class="text-gray-600">Access comprehensive market data from multiple sources including DexScreener and Helius for informed trading decisions.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 transition-all hover:shadow-xl">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-rocket-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Lightning-Fast Execution</h3>
+<p class="text-gray-600">Leverage Jito bundles and custom RPC endpoints for millisecond-level transaction execution speed.</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 transition-all hover:shadow-xl">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-shield-check-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Advanced Risk Management</h3>
+<p class="text-gray-600">Set custom stop-loss and take-profit levels with our intelligent risk management system to protect your investments.</p>
+</div>
+<!-- Feature 5 -->
+<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 transition-all hover:shadow-xl">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-dashboard-3-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Intuitive Trading Interface</h3>
+<p class="text-gray-600">Our user-friendly dashboard provides comprehensive analytics and one-click trading execution.</p>
+</div>
+<!-- Feature 6 -->
+<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-100 transition-all hover:shadow-xl">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-notification-3-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Customizable Alerts</h3>
+<p class="text-gray-600">Set up personalized alerts for price movements, new token launches, and market conditions.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section id="how-it-works" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Getting started with our Solana sniper bot is simple and straightforward.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100 relative">
+<div class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">1</div>
+<h3 class="text-xl font-semibold mb-4 mt-2">Connect Your Wallet</h3>
+<p class="text-gray-600 mb-4">Simply connect your Phantom wallet to our platform with one click. Your funds remain secure and under your control.</p>
+<img src="https://readdy.ai/api/search-image?query=3D%20illustration%20of%20a%20Solana%20wallet%20connecting%20to%20a%20secure%20platform%2C%20with%20glowing%20connection%20lines%2C%20futuristic%20interface%20elements%2C%20secure%20lock%20symbols%2C%20minimalist%20design%2C%20high-tech%2C%20digital%20art%20style&width=400&height=300&seq=step1&orientation=landscape" alt="Connect Wallet" class="w-full h-48 object-cover rounded-lg">
+</div>
+<!-- Step 2 -->
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100 relative">
+<div class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">2</div>
+<h3 class="text-xl font-semibold mb-4 mt-2">Configure Your Bot</h3>
+<p class="text-gray-600 mb-4">Customize your trading parameters or use our AI-recommended settings for optimal performance.</p>
+<img src="https://readdy.ai/api/search-image?query=3D%20illustration%20of%20advanced%20trading%20bot%20configuration%20screen%20with%20sliders%2C%20toggles%2C%20and%20parameters%20being%20adjusted%2C%20futuristic%20UI%20design%2C%20holographic%20elements%2C%20purple%20and%20blue%20color%20scheme%2C%20digital%20art%20style&width=400&height=300&seq=step2&orientation=landscape" alt="Configure Bot" class="w-full h-48 object-cover rounded-lg">
+</div>
+<!-- Step 3 -->
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100 relative">
+<div class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">3</div>
+<h3 class="text-xl font-semibold mb-4 mt-2">Launch & Monitor</h3>
+<p class="text-gray-600 mb-4">Activate the bot and watch as it executes trades. Track performance in real-time through our intuitive dashboard.</p>
+<img src="https://readdy.ai/api/search-image?query=3D%20illustration%20of%20cryptocurrency%20trading%20dashboard%20with%20real-time%20charts%2C%20profit%20indicators%2C%20and%20transaction%20history%2C%20showing%20successful%20trades%20being%20executed%2C%20futuristic%20interface%2C%20digital%20art%20style&width=400&height=300&seq=step3&orientation=landscape" alt="Launch Bot" class="w-full h-48 object-cover rounded-lg">
+</div>
+</div>
+</div>
+</section>
+<!-- Statistics Section -->
+<section class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center">
+<h3 class="text-4xl font-bold text-primary mb-2">$127M+</h3>
+<p class="text-gray-600">Trading Volume</p>
+</div>
+<div class="text-center">
+<h3 class="text-4xl font-bold text-primary mb-2">14,500+</h3>
+<p class="text-gray-600">Active Users</p>
+</div>
+<div class="text-center">
+<h3 class="text-4xl font-bold text-primary mb-2">0.8ms</h3>
+<p class="text-gray-600">Average Execution Time</p>
+</div>
+<div class="text-center">
+<h3 class="text-4xl font-bold text-primary mb-2">98.7%</h3>
+<p class="text-gray-600">Success Rate</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the plan that fits your trading needs.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+<!-- Basic Plan -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+<div class="p-8">
+<h3 class="text-xl font-semibold mb-2">Starter</h3>
+<div class="flex items-end mb-6">
+<span class="text-4xl font-bold">$49</span>
+<span class="text-gray-500 ml-2">/month</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Basic AI sniping</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Standard RPC access</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>5 concurrent tokens</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Basic risk management</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-close-line ri-lg mr-2"></i>
+<span>Jito bundle integration</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-close-line ri-lg mr-2"></i>
+<span>Advanced analytics</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-gray-200 text-gray-800 rounded-button font-semibold hover:bg-gray-300 transition-all !rounded-button whitespace-nowrap">Get Started</button>
+</div>
+</div>
+<!-- Pro Plan -->
+<div class="bg-white rounded-lg shadow-xl overflow-hidden border-2 border-primary relative transition-transform hover:scale-105">
+<div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-semibold">POPULAR</div>
+<div class="p-8">
+<h3 class="text-xl font-semibold mb-2">Professional</h3>
+<div class="flex items-end mb-6">
+<span class="text-4xl font-bold">$149</span>
+<span class="text-gray-500 ml-2">/month</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Advanced AI sniping</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Premium RPC access</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>20 concurrent tokens</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Advanced risk management</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Jito bundle integration</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-close-line ri-lg mr-2"></i>
+<span>Advanced analytics</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-primary text-white rounded-button font-semibold hover:bg-opacity-90 transition-all !rounded-button whitespace-nowrap">Get Started</button>
+</div>
+</div>
+<!-- Enterprise Plan -->
+<div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+<div class="p-8">
+<h3 class="text-xl font-semibold mb-2">Enterprise</h3>
+<div class="flex items-end mb-6">
+<span class="text-4xl font-bold">$349</span>
+<span class="text-gray-500 ml-2">/month</span>
+</div>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Elite AI sniping</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Dedicated RPC endpoints</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Unlimited concurrent tokens</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Elite risk management</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Priority Jito bundles</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line ri-lg text-green-500 mr-2"></i>
+<span>Advanced analytics</span>
+</li>
+</ul>
+<button class="w-full py-3 bg-gray-800 text-white rounded-button font-semibold hover:bg-gray-700 transition-all !rounded-button whitespace-nowrap">Get Started</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Users Say</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Don't just take our word for it. Here's what traders are saying about our platform.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="text-amber-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-6">"This bot has completely transformed my trading strategy. I've seen a 300% increase in my portfolio since I started using it. The AI features are truly game-changing."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">Michael Rodriguez</h4>
+<p class="text-sm text-gray-500">Professional Trader</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="text-amber-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-6">"The execution speed is unmatched. I've tried several other bots, but none come close to the performance I get with this one. The Jito integration is a game-changer."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">Sophia Chen</h4>
+<p class="text-sm text-gray-500">Crypto Investor</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<div class="flex items-center mb-4">
+<div class="text-amber-400 flex">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-6">"As a beginner in crypto trading, this platform made it incredibly easy to get started. The interface is intuitive, and the AI recommendations have been spot on."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-3-line ri-lg text-gray-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">James Wilson</h4>
+<p class="text-sm text-gray-500">New Trader</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Find answers to common questions about our Solana sniper bot.</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="space-y-6">
+<!-- FAQ Item 1 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none" data-target="faq-1">
+<span class="font-semibold text-lg">How does the AI auto-sniping feature work?</span>
+<i class="ri-arrow-down-s-line ri-lg transition-transform"></i>
+</button>
+<div id="faq-1" class="faq-content hidden px-6 pb-6">
+<p class="text-gray-600">Our AI auto-sniping feature uses advanced machine learning algorithms to analyze market conditions, token fundamentals, and historical data to identify high-potential trading opportunities. It continuously monitors the Solana ecosystem for new token launches and price movements, executing trades based on predefined parameters and risk management rules.</p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none" data-target="faq-2">
+<span class="font-semibold text-lg">Is my wallet secure when connected to the platform?</span>
+<i class="ri-arrow-down-s-line ri-lg transition-transform"></i>
+</button>
+<div id="faq-2" class="faq-content hidden px-6 pb-6">
+<p class="text-gray-600">Absolutely. We prioritize security above all else. Our platform never stores your private keys or seed phrases. We use a secure connection method that only requests transaction approval from your wallet when needed. You maintain full control of your funds at all times, and can disconnect your wallet with a single click.</p>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none" data-target="faq-3">
+<span class="font-semibold text-lg">What advantages does Jito integration provide?</span>
+<i class="ri-arrow-down-s-line ri-lg transition-transform"></i>
+</button>
+<div id="faq-3" class="faq-content hidden px-6 pb-6">
+<p class="text-gray-600">Jito integration allows our bot to submit transaction bundles directly to Solana validators, significantly reducing transaction latency and increasing the likelihood of successful execution. This is particularly crucial for high-speed trading scenarios like token launches or arbitrage opportunities, where milliseconds can make the difference between profit and loss.</p>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none" data-target="faq-4">
+<span class="font-semibold text-lg">Can I customize the risk management settings?</span>
+<i class="ri-arrow-down-s-line ri-lg transition-transform"></i>
+</button>
+<div id="faq-4" class="faq-content hidden px-6 pb-6">
+<p class="text-gray-600">Yes, our platform offers fully customizable risk management settings. You can set specific stop-loss and take-profit levels, maximum allocation per trade, slippage tolerance, and more. Our advanced users can even create conditional rules based on market conditions and token performance metrics.</p>
+</div>
+</div>
+<!-- FAQ Item 5 -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none" data-target="faq-5">
+<span class="font-semibold text-lg">Do you offer a trial period?</span>
+<i class="ri-arrow-down-s-line ri-lg transition-transform"></i>
+</button>
+<div id="faq-5" class="faq-content hidden px-6 pb-6">
+<p class="text-gray-600">Yes, we offer a 7-day trial period for new users to experience the full capabilities of our Professional plan. During this period, you'll have access to all features except for the most advanced AI sniping algorithms. No credit card is required to start your trial.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-primary bg-opacity-5">
+<div class="container mx-auto px-6">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Revolutionize Your Solana Trading?</h2>
+<p class="text-lg text-gray-600 mb-8">Join thousands of traders who are already leveraging our advanced sniper bot to maximize their profits.</p>
+<button id="start-now-footer" class="px-8 py-3 bg-primary text-white rounded-button text-lg font-semibold hover:bg-opacity-90 transition-all glow !rounded-button whitespace-nowrap">Start Now</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+<div>
+<h1 class="text-2xl font-['Pacifico'] text-white mb-4">logo</h1>
+<p class="text-gray-400 mb-4">Advanced Solana sniper bot with AI-powered trading capabilities.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-telegram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-discord-line"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+<i class="ri-github-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+<li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+<li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+<li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Resources</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+<ul class="space-y-2">
+<li class="flex items-center">
+<i class="ri-mail-line mr-2"></i>
+<a href="mailto:support@solanasnipe.com" class="text-gray-400 hover:text-white transition-colors">support@solanasnipe.com</a>
+</li>
+<li class="flex items-center">
+<i class="ri-customer-service-2-line mr-2"></i>
+<span class="text-gray-400">24/7 Support</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 SolanaSnipe. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<!-- Trading Interface (Hidden by Default) -->
+<div id="trading-interface" class="hidden fixed inset-0 bg-gray-900 text-white overflow-hidden">
+<!-- Header -->
+<header class="h-16 bg-gray-800 border-b border-gray-700 flex items-center justify-between px-6">
+<div class="flex items-center">
+<h1 class="text-xl font-['Pacifico'] text-primary mr-8">logo</h1>
+<nav class="hidden md:flex space-x-6">
+<a href="#" class="text-primary border-b-2 border-primary pb-1">Dashboard</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">Markets</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">Portfolio</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">Settings</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="hidden md:flex items-center bg-gray-700 rounded-full px-4 py-1.5">
+<i class="ri-notification-3-line mr-2"></i>
+<span class="text-sm">3 Alerts</span>
+</div>
+<button id="wallet-button" class="flex items-center bg-gray-700 hover:bg-gray-600 rounded-full px-4 py-1.5 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-wallet-3-line mr-2"></i>
+<span class="text-sm">Connect Wallet</span>
+</button>
+<button id="back-to-landing" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-gray-700">
+<i class="ri-arrow-left-line"></i>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<div class="flex h-[calc(100vh-4rem)] overflow-hidden">
+<!-- Left Sidebar -->
+<div class="w-20 md:w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+<div class="p-4">
+<div class="hidden md:block mb-6">
+<h3 class="text-xs uppercase text-gray-500 mb-2">Main Navigation</h3>
+<ul class="space-y-2">
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg bg-gray-700 text-white">
+<i class="ri-dashboard-line"></i>
+<span class="hidden md:inline">Dashboard</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-line-chart-line"></i>
+<span class="hidden md:inline">Markets</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-rocket-line"></i>
+<span class="hidden md:inline">Sniper Bot</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-funds-box-line"></i>
+<span class="hidden md:inline">Portfolio</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-history-line"></i>
+<span class="hidden md:inline">Transaction History</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="hidden md:block">
+<h3 class="text-xs uppercase text-gray-500 mb-2">Bot Settings</h3>
+<ul class="space-y-2">
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-settings-3-line"></i>
+<span class="hidden md:inline">General Settings</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-robot-line"></i>
+<span class="hidden md:inline">AI Configuration</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-database-2-line"></i>
+<span class="hidden md:inline">RPC Settings</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center space-x-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-alert-line"></i>
+<span class="hidden md:inline">Alerts & Notifications</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Mobile Navigation -->
+<div class="md:hidden flex flex-col items-center space-y-6">
+<a href="#" class="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-700 text-white">
+<i class="ri-dashboard-line ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-line-chart-line ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-rocket-line ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-funds-box-line ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-history-line ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white transition-colors">
+<i class="ri-settings-3-line ri-lg"></i>
+</a>
+</div>
+</div>
+<div class="mt-auto p-4 hidden md:block">
+<div class="bg-gray-700 rounded-lg p-3">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-gray-400">Network Status</span>
+<span class="flex items-center text-green-400 text-xs">
+<span class="w-2 h-2 bg-green-400 rounded-full mr-1"></span>
+Healthy
+</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-gray-400">Solana TPS</span>
+<span class="text-xs">3,245</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- Dashboard Header -->
+<div class="bg-gray-800 p-4 border-b border-gray-700">
+<div class="flex flex-col md:flex-row md:items-center justify-between">
+<div>
+<h2 class="text-xl font-semibold">AI Sniper Dashboard</h2>
+<p class="text-gray-400 text-sm">Tuesday, June 17, 2025 | Last scan: 2 seconds ago</p>
+</div>
+<div class="flex items-center space-x-3 mt-4 md:mt-0">
+<div class="relative">
+<input type="text" placeholder="Search tokens..." class="bg-gray-700 border-none rounded-lg pl-10 pr-4 py-2 w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-primary">
+<i class="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+</div>
+<button class="p-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-refresh-line"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Content -->
+<div class="flex-1 overflow-auto custom-scrollbar bg-gray-900 p-4">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+<!-- Portfolio Value Card -->
+<div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h3 class="text-sm text-gray-400">Portfolio Value</h3>
+<p class="text-2xl font-semibold">0.00 SOL</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<i class="ri-wallet-3-line text-primary"></i>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-400 text-sm">Connect wallet to view</span>
+</div>
+</div>
+<!-- Today's Profit Card -->
+<div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h3 class="text-sm text-gray-400">Today's Profit</h3>
+<p class="text-2xl font-semibold">0.00 SOL</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-green-500 bg-opacity-20 flex items-center justify-center">
+<i class="ri-line-chart-line text-green-500"></i>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-400 text-sm">Connect wallet to view</span>
+</div>
+</div>
+<!-- Active Bots Card -->
+<div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h3 class="text-sm text-gray-400">Active Bots</h3>
+<p class="text-2xl font-semibold">0 / 5</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-blue-500 bg-opacity-20 flex items-center justify-center">
+<i class="ri-robot-line text-blue-500"></i>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-400 text-sm">Connect wallet to activate</span>
+</div>
+</div>
+</div>
+<!-- Bot Configuration Section -->
+<div class="bg-gray-800 rounded-lg border border-gray-700 mb-6 overflow-hidden">
+<div class="p-4 border-b border-gray-700 flex justify-between items-center">
+<h3 class="font-semibold">AI Sniper Bot Configuration</h3>
+<div class="flex items-center">
+<span class="text-gray-400 text-sm mr-2">Bot Status:</span>
+<span class="text-red-500 text-sm">Inactive</span>
+</div>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- RPC Selection -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">RPC Provider</label>
+<div class="relative">
+<button class="w-full flex items-center justify-between bg-gray-700 rounded-lg p-3 text-left focus:outline-none !rounded-button whitespace-nowrap">
+<span>Select RPC Provider</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+</div>
+</div>
+<!-- Helius API -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Helius API Key</label>
+<input type="text" placeholder="Enter your Helius API key" class="w-full bg-gray-700 border-none rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<!-- Jito Settings -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Jito Bundle Enabled</label>
+<div class="flex items-center">
+<div class="relative inline-block w-12 h-6 mr-2">
+<input type="checkbox" id="jito-toggle" class="sr-only">
+<div class="block bg-gray-600 w-12 h-6 rounded-full"></div>
+<div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+</div>
+<label for="jito-toggle" class="text-sm text-gray-400">Off</label>
+</div>
+</div>
+<!-- Max Allocation -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Max Allocation per Trade (SOL)</label>
+<input type="number" value="0.1" min="0.01" step="0.01" class="w-full bg-gray-700 border-none rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<!-- Risk Level -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Risk Level</label>
+<div class="flex items-center">
+<input type="range" min="1" max="10" value="5" class="w-full">
+<span class="ml-2 text-sm">5</span>
+</div>
+</div>
+<!-- Auto Take Profit -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Auto Take Profit (%)</label>
+<input type="number" value="50" min="10" max="1000" class="w-full bg-gray-700 border-none rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<!-- Stop Loss -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Stop Loss (%)</label>
+<input type="number" value="20" min="5" max="100" class="w-full bg-gray-700 border-none rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<!-- Max Slippage -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">Max Slippage (%)</label>
+<input type="number" value="15" min="1" max="100" class="w-full bg-gray-700 border-none rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary">
+</div>
+<!-- AI Mode -->
+<div>
+<label class="block text-gray-400 text-sm mb-2">AI Mode</label>
+<div class="relative">
+<button class="w-full flex items-center justify-between bg-gray-700 rounded-lg p-3 text-left focus:outline-none !rounded-button whitespace-nowrap">
+<span>Aggressive</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-center">
+<button id="launch-bot" class="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all !rounded-button whitespace-nowrap">
+<i class="ri-rocket-line mr-2"></i>
+Launch Sniper Bot
+</button>
+</div>
+</div>
+</div>
+<!-- Market Overview -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart -->
+<div class="lg:col-span-2 bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+<div class="p-4 border-b border-gray-700 flex justify-between items-center">
+<h3 class="font-semibold">Market Overview</h3>
+<div class="flex">
+<button class="px-3 py-1 text-sm bg-gray-700 rounded-l-lg hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">1H</button>
+<button class="px-3 py-1 text-sm bg-primary rounded-none !rounded-button whitespace-nowrap">24H</button>
+<button class="px-3 py-1 text-sm bg-gray-700 rounded-none hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">7D</button>
+<button class="px-3 py-1 text-sm bg-gray-700 rounded-r-lg hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">30D</button>
+</div>
+</div>
+<div id="market-chart" class="h-80"></div>
+</div>
+<!-- Hot Tokens -->
+<div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+<div class="p-4 border-b border-gray-700">
+<h3 class="font-semibold">Hot Tokens</h3>
+</div>
+<div class="p-2">
+<div class="space-y-2">
+<!-- Token 1 -->
+<div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded-lg transition-colors">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3 token-glow">
+<span class="text-xs font-bold">BONK</span>
+</div>
+<div>
+<h4 class="font-medium">BONK</h4>
+<p class="text-xs text-gray-400">Bonk Inu</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$0.00002134</p>
+<p class="text-xs text-green-500">+12.3%</p>
+</div>
+</div>
+<!-- Token 2 -->
+<div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded-lg transition-colors">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3">
+<span class="text-xs font-bold">JTO</span>
+</div>
+<div>
+<h4 class="font-medium">JTO</h4>
+<p class="text-xs text-gray-400">Jito</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$3.87</p>
+<p class="text-xs text-red-500">-2.1%</p>
+</div>
+</div>
+<!-- Token 3 -->
+<div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded-lg transition-colors">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3 token-glow">
+<span class="text-xs font-bold">PYTH</span>
+</div>
+<div>
+<h4 class="font-medium">PYTH</h4>
+<p class="text-xs text-gray-400">Pyth Network</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$0.78</p>
+<p class="text-xs text-green-500">+3.4%</p>
+</div>
+</div>
+<!-- Token 4 -->
+<div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded-lg transition-colors">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mr-3 token-glow">
+<span class="text-xs font-bold">BOME</span>
+</div>
+<div>
+<h4 class="font-medium">BOME</h4>
+<p class="text-xs text-gray-400">Book of Meme</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$0.00000912</p>
+<p class="text-xs text-green-500">+28.5%</p>
+</div>
+</div>
+<!-- Token 5 -->
+<div class="flex items-center justify-between p-2 hover:bg-gray-700 rounded-lg transition-colors">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+<span class="text-xs font-bold">SAMO</span>
+</div>
+<div>
+<h4 class="font-medium">SAMO</h4>
+<p class="text-xs text-gray-400">Samoyedcoin</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$0.0189</p>
+<p class="text-xs text-green-500">+8.7%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Transactions (Hidden until bot is launched) -->
+<div id="recent-transactions" class="hidden mt-6 bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+<div class="p-4 border-b border-gray-700">
+<h3 class="font-semibold">Recent Transactions</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-700">
+<th class="p-3 text-left text-sm font-semibold">Token</th>
+<th class="p-3 text-left text-sm font-semibold">Type</th>
+<th class="p-3 text-left text-sm font-semibold">Amount</th>
+<th class="p-3 text-left text-sm font-semibold">Price</th>
+<th class="p-3 text-left text-sm font-semibold">Value</th>
+<th class="p-3 text-left text-sm font-semibold">Time</th>
+<th class="p-3 text-left text-sm font-semibold">Status</th>
+</tr>
+</thead>
+<tbody id="transaction-list">
+<!-- Transactions will be added here dynamically -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (Watchlist & Alerts) -->
+<div class="hidden lg:block w-80 bg-gray-800 border-l border-gray-700 overflow-hidden">
+<div class="h-full flex flex-col">
+<!-- Watchlist -->
+<div class="p-4 border-b border-gray-700">
+<h3 class="font-semibold mb-4">Watchlist</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+<span class="text-xs font-bold">SOL</span>
+</div>
+<div>
+<h4 class="font-medium">SOL</h4>
+<p class="text-xs text-gray-400">Solana</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$178.42</p>
+<p class="text-xs text-green-500">+5.8%</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3">
+<span class="text-xs font-bold">JTO</span>
+</div>
+<div>
+<h4 class="font-medium">JTO</h4>
+<p class="text-xs text-gray-400">Jito</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$3.87</p>
+<p class="text-xs text-red-500">-2.1%</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+<span class="text-xs font-bold">PYTH</span>
+</div>
+<div>
+<h4 class="font-medium">PYTH</h4>
+<p class="text-xs text-gray-400">Pyth Network</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-medium">$0.78</p>
+<p class="text-xs text-green-500">+3.4%</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 p-2 bg-gray-700 rounded-lg text-sm hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-add-line mr-1"></i>
+Add Token
+</button>
+</div>
+<!-- Alerts -->
+<div class="flex-1 p-4 overflow-auto custom-scrollbar">
+<h3 class="font-semibold mb-4">Recent Alerts</h3>
+<div class="space-y-3">
+<div class="bg-gray-700 p-3 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">New Token Launch</span>
+<span class="text-xs text-gray-400">5m ago</span>
+</div>
+<p class="text-sm text-gray-300">New token PEPE detected on Raydium.</p>
+</div>
+<div class="bg-gray-700 p-3 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">Price Alert</span>
+<span class="text-xs text-gray-400">15m ago</span>
+</div>
+<p class="text-sm text-gray-300">BONK increased by 12% in the last hour.</p>
+</div>
+<div class="bg-gray-700 p-3 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">System</span>
+<span class="text-xs text-gray-400">1h ago</span>
+</div>
+<p class="text-sm text-gray-300">Solana network congestion detected. Transactions may be delayed.</p>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="p-4 border-t border-gray-700">
+<h3 class="font-semibold mb-4">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-2 bg-gray-700 rounded-lg text-sm hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-refresh-line mr-1"></i>
+Refresh Data
+</button>
+<button class="p-2 bg-gray-700 rounded-lg text-sm hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-settings-3-line mr-1"></i>
+Settings
+</button>
+<button class="p-2 bg-gray-700 rounded-lg text-sm hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-notification-3-line mr-1"></i>
+Alerts
+</button>
+<button class="p-2 bg-gray-700 rounded-lg text-sm hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<i class="ri-question-line mr-1"></i>
+Help
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Wallet Connection Modal -->
+<div id="wallet-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+<div class="bg-gray-800 rounded-lg p-6 w-full max-w-md">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-semibold">Connect Wallet</h3>
+<button id="close-wallet-modal" class="text-gray-400 hover:text-white">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-between p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center mr-3">
+<i class="ri-ghost-line ri-lg"></i>
+</div>
+<span>Phantom</span>
+</div>
+<i class="ri-arrow-right-line"></i>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+<i class="ri-wallet-3-line ri-lg"></i>
+</div>
+<span>Solflare</span>
+</div>
+<i class="ri-arrow-right-line"></i>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors !rounded-button whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-3">
+<i class="ri-wallet-3-line ri-lg"></i>
+</div>
+<span>Backpack</span>
+</div>
+<i class="ri-arrow-right-line"></i>
+</button>
+</div>
+<div class="mt-6 text-center text-sm text-gray-400">
+By connecting your wallet, you agree to our Terms of Service and Privacy Policy.
+</div>
+</div>
+</div>
+<!-- Success Modal -->
+<div id="success-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+<div class="bg-gray-800 rounded-lg p-6 w-full max-w-md">
+<div class="text-center mb-6">
+<div class="w-20 h-20 bg-green-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-check-line ri-3x text-green-500"></i>
+</div>
+<h3 class="text-xl font-semibold">Sniping Complete!</h3>
+<p class="text-gray-400 mt-2">Your AI sniper bot has successfully completed its trading session.</p>
+</div>
+<div class="bg-gray-700 rounded-lg p-4 mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-gray-400">Total Trades:</span>
+<span class="font-semibold">5</span>
+</div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-gray-400">Total Spent:</span>
+<span class="font-semibold">0.85 SOL</span>
+</div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-gray-400">Current Value:</span>
+<span class="font-semibold">1.23 SOL</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-400">Profit:</span>
+<span class="font-semibold text-green-500">+0.38 SOL (+44.7%)</span>
+</div>
+</div>
+<div class="flex justify-center">
+<button id="close-success-modal" class="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all !rounded-button whitespace-nowrap">
+View Details
+</button>
+</div>
+</div>
+</div>
+<script id="landing-page-script">
+document.addEventListener('DOMContentLoaded', function() {
+// Navigation buttons to switch between landing page and trading interface
+const startNowButtons = [
+document.getElementById('start-now-hero'),
+document.getElementById('start-now-nav'),
+document.getElementById('start-now-footer')
+];
+const landingPage = document.getElementById('landing-page');
+const tradingInterface = document.getElementById('trading-interface');
+const backToLandingBtn = document.getElementById('back-to-landing');
+startNowButtons.forEach(button => {
+if (button) {
+button.addEventListener('click', function() {
+landingPage.classList.add('hidden');
+tradingInterface.classList.remove('hidden');
+});
+}
+});
+if (backToLandingBtn) {
+backToLandingBtn.addEventListener('click', function() {
+tradingInterface.classList.add('hidden');
+landingPage.classList.remove('hidden');
+});
+}
+// FAQ Toggles
+const faqToggles = document.querySelectorAll('.faq-toggle');
+faqToggles.forEach(toggle => {
+toggle.addEventListener('click', function() {
+const targetId = this.getAttribute('data-target');
+const content = document.getElementById(targetId);
+if (content.classList.contains('hidden')) {
+content.classList.remove('hidden');
+this.querySelector('i').classList.add('rotate-180');
+} else {
+content.classList.add('hidden');
+this.querySelector('i').classList.remove('rotate-180');
+}
+});
+});
+});
+</script>
+<script id="trading-interface-script">
+document.addEventListener('DOMContentLoaded', function() {
+// Initialize Market Chart
+const marketChartEl = document.getElementById('market-chart');
+if (marketChartEl) {
+const marketChart = echarts.init(marketChartEl);
+const option = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#ddd',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+left: '3%',
+right: '3%',
+bottom: '3%',
+top: '3%',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'],
+axisLine: {
+lineStyle: {
+color: '#444'
+}
+},
+axisLabel: {
+color: '#999'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#444'
+}
+},
+splitLine: {
+lineStyle: {
+color: '#333'
+}
+},
+axisLabel: {
+color: '#999'
+}
+},
+series: [
+{
+name: 'SOL Price',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.3)'
+},
+{
+offset: 1,
+color: 'rgba(87, 181, 231, 0.1)'
+}
+])
+},
+data: [172.5, 173.2, 174.1, 173.8, 175.2, 176.5, 177.3, 178.1, 177.9, 178.4, 178.2, 178.5]
+},
+{
+name: 'Market Volume',
+type: 'bar',
+barWidth: '60%',
+itemStyle: {
+color: 'rgba(141, 211, 199, 0.6)'
+},
+data: [42, 38, 35, 30, 45, 55, 65, 60, 58, 63, 58, 62]
+}
+]
+};
+marketChart.setOption(option);
+window.addEventListener('resize', function() {
+marketChart.resize();
+});
+}
+// Wallet Connection
+const walletButton = document.getElementById('wallet-button');
+const walletModal = document.getElementById('wallet-modal');
+const closeWalletModal = document.getElementById('close-wallet-modal');
+if (walletButton && walletModal && closeWalletModal) {
+walletButton.addEventListener('click', function() {
+walletModal.classList.remove('hidden');
+});
+closeWalletModal.addEventListener('click', function() {
+walletModal.classList.add('hidden');
+});
+}
+// Jito Toggle
+const jitoToggle = document.getElementById('jito-toggle');
+if (jitoToggle) {
+jitoToggle.addEventListener('change', function() {
+const label = this.nextElementSibling.nextElementSibling;
+const dot = this.nextElementSibling.nextElementSibling.previousElementSibling;
+if (this.checked) {
+label.textContent = 'On';
+dot.classList.add('translate-x-6');
+dot.classList.remove('bg-white');
+dot.classList.add('bg-primary');
+this.nextElementSibling.classList.remove('bg-gray-600');
+this.nextElementSibling.classList.add('bg-primary', 'bg-opacity-50');
+} else {
+label.textContent = 'Off';
+dot.classList.remove('translate-x-6');
+dot.classList.add('bg-white');
+dot.classList.remove('bg-primary');
+this.nextElementSibling.classList.add('bg-gray-600');
+this.nextElementSibling.classList.remove('bg-primary', 'bg-opacity-50');
+}
+});
+}
+// Launch Bot
+const launchBotBtn = document.getElementById('launch-bot');
+const recentTransactions = document.getElementById('recent-transactions');
+const transactionList = document.getElementById('transaction-list');
+const successModal = document.getElementById('success-modal');
+const closeSuccessModal = document.getElementById('close-success-modal');
+if (launchBotBtn && recentTransactions && transactionList) {
+launchBotBtn.addEventListener('click', function() {
+// Clear previous transactions
+transactionList.innerHTML = '';
+// Show transactions section
+recentTransactions.classList.remove('hidden');
+// Sample tokens for demonstration
+const tokens = [
+{ symbol: 'BONK', name: 'Bonk Inu', color: 'blue' },
+{ symbol: 'BOME', name: 'Book of Meme', color: 'orange' },
+{ symbol: 'PYTH', name: 'Pyth Network', color: 'green' },
+{ symbol: 'SAMO', name: 'Samoyedcoin', color: 'yellow' },
+{ symbol: 'JTO', name: 'Jito', color: 'purple' }
+];
+// Simulate transactions appearing one by one
+let count = 0;
+const interval = setInterval(() => {
+if (count >= tokens.length) {
+clearInterval(interval);
+// Show success modal after all transactions
+setTimeout(() => {
+successModal.classList.remove('hidden');
+}, 1000);
+return;
+}
+const token = tokens[count];
+const amount = (Math.random() * 0.2 + 0.1).toFixed(2);
+const price = (Math.random() * 0.01).toFixed(8);
+const value = (amount * price * 1000).toFixed(2);
+const row = document.createElement('tr');
+row.className = 'border-b border-gray-700 fade-in';
+row.innerHTML = `
+<td class="p-3">
+<div class="flex items-center">
+<div class="w-8 h-8 bg-${token.color}-500 rounded-full flex items-center justify-center mr-3">
+<span class="text-xs font-bold">${token.symbol}</span>
+</div>
+<div>
+<h4 class="font-medium">${token.symbol}</h4>
+<p class="text-xs text-gray-400">${token.name}</p>
+</div>
+</div>
+</td>
+<td class="p-3">
+<span class="px-2 py-1 bg-green-500 bg-opacity-20 text-green-500 rounded-full text-xs">Buy</span>
+</td>
+<td class="p-3">${amount} SOL</td>
+<td class="p-3">$${price}</td>
+<td class="p-3">$${value}</td>
+<td class="p-3">Just now</td>
+<td class="p-3">
+<span class="px-2 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs">Completed</span>
+</td>
+`;
+transactionList.appendChild(row);
+count++;
+}, 800);
+});
+if (closeSuccessModal) {
+closeSuccessModal.addEventListener('click', function() {
+successModal.classList.add('hidden');
+});
+}
+}
+});
+</script>
 </body>
 </html>
